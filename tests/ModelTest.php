@@ -1,6 +1,6 @@
 <?php
 
-require './framework/Model.php';
+require './framework/Model_Abstract.php';
 
 class ModelTest extends PHPUnit\Framework\TestCase {
     // a. Ensure a valid Model object is created.
@@ -23,6 +23,18 @@ class ModelTest extends PHPUnit\Framework\TestCase {
 
     // public function testValidModel() {
     //     $this->assertInstanceOf(Model::class, $model, $message = 'Failed to create model object of type Model!');
+    // }
+
+    // public function testObservableAttach() {
+
+    // }
+
+    // public function testObservableDetatch() {
+
+    // }
+
+    // public function testObservableNotify() {
+
     // }
 
 }

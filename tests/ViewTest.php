@@ -5,16 +5,14 @@ require './framework/View.php';
 class ViewTest extends PHPUnit\Framework\TestCase {
 
     private $view;
-    private $name;
 
     public function setUp() : void {
         $this->view = new View();
     }
 
     public function tearDown() : void {
-
+        
     }
-
    
     
     
@@ -29,10 +27,16 @@ class ViewTest extends PHPUnit\Framework\TestCase {
     // described in Question 5. The testing must check for invalid parameters for all methods
     // and that the output of the methods is as specified.
 
+    public function testSetTemplateParametersString() {
+        $this->view->setTemplate('123');//switch '123' to 123 (non string) to test
+    }
+
+    public function testSetTemplateParameterEmptyString() {
+        $this->view->setTemplate('a'); //switch 'a' to '' to test
+        //$this->expectException(Exception::class);
+    }
+
     public function testSetTemplate() {
-
-        //test to see if it only allows tpl files.
-
         //testing that $tpl is set from $filename input
         $this->view->setTemplate('index.tpl.php');
         $tpl = $this->view->getTemplate();
@@ -40,18 +44,19 @@ class ViewTest extends PHPUnit\Framework\TestCase {
     }
 
     public function testDisplay() {
+        //create variable to hold result of display for testing purposes
         $page = $this->view->display();
-        echo $page;
+
+        //test if display output is string
         $this->assertIsString($page);
+        //test if display output is a non-empty string
         $this->assertNotEmpty($page);
 
     }
 
-
-    public function testValidEquals() {
-        $this->name = "william";
-
-        $this->assertEquals($this->name, "william");
+    public function testAddVar() {
+        $this->view->addVar('name', 'jonathan');
+        $variables = $this->view->getVars();
+        $this->assertEquals('jonathan', $variables['name']);
     }
-
 }
