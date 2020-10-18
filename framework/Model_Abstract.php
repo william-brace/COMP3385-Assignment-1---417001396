@@ -2,16 +2,23 @@
 
 abstract class Model_Abstract{
 
-    
+    protected $cached_json = [];
     //Retrieves all the records from the JSON file and returns them in a multi-dimensional associative array.
     abstract public function getAll() : array ;
 
     //array.Retrieves a database record using the id stored in the Model data structure.
     //Returns the data in an associative array.
-    abstract public function getRecord(tring $id) : array ;
+    abstract public function getRecord(string $id) : array ;
 
-    public function loadData(array $data)
+    public function loadData(string $fromFile) : array
     {
+        $filename = basename($fromFile, '.json');
+        if (!isset($this->cached_json[$filename]) || empty($this->cached_json[$filename]))
+        {
+            $json_file=file_get_contents($fromFile);
+            $this->cached_json[$filename] = json_decode($json_file, true);
+        }
+        return $this->cached_json[$filename];
 
     }
 }

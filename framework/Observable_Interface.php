@@ -2,7 +2,7 @@
 
 interface Observable_Interface
 {
-    public function attach(Observer $observer);
-    public function detach(Observer $observer);
+    public function attach(Observer_Interface $observer);
+    public function detach(Observer_Interface $observer);
     public function notify();
 }

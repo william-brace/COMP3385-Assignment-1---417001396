@@ -1,6 +1,8 @@
 <?php 
 
-require './framework/Observer_Interface.php';
+require './autoload.php';
+
+//require './framework/Observer_Interface.php';
 
 class View implements Observer_Interface {
     
@@ -38,7 +40,7 @@ class View implements Observer_Interface {
     //outputs the page as a string that is displayed in the browser. [2 marks]
     public function display() {
         extract($this->vars);
-        echo $this->tpl;
+        require $this->tpl;
         return "asfasd";
         
     }
@@ -53,9 +55,9 @@ class View implements Observer_Interface {
     }
 
     public function update(Observable_Model $observable) {
-        $record = $observable->updatedData();
-        foreach($record as $rec) {
-            $this->addVar($rec['name'], $rec['value']);
+        $record = $observable->giveUpdate();
+        foreach($record as $k => $r) {
+            $this->addVar($k, $r);
         }
         $this->display();
     }

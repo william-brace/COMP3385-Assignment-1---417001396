@@ -1,19 +1,22 @@
 <?php
 
-require './framework/Model_Abstract.php';
-require './framework/Observable_Interface.php';
+// require './framework/Model_Abstract.php';
+// require './framework/Observable_Interface.php';
 
-abstract class ObservableModel extends Model_Abstract implements Observable_Interface  {
+require './autoload.php';
+
+
+abstract class Observable_Model extends Model_Abstract implements Observable_Interface  {
 
     protected $observers = [];
 
     protected $updatedData = [];
 
     public function attach(Observer_Interface $observer) {
-        $this->$observers = $observer;
+        $this->observers[] = $observer;
     }
     
-    public function detach(Observer $observer) {
+    public function detach(Observer_Interface $observer) {
         $this->observers = array_filter($this->observers, function ($a) use ($observer) {
             return (! ($a == $observer));
         });
@@ -25,12 +28,16 @@ abstract class ObservableModel extends Model_Abstract implements Observable_Inte
         }
     }
 
-    public function updatedData() {
+    public function giveUpdate() {
         return $this->updatedData;
+    }
+
+    public function updateTheChangedData(array $data) {
+        $this->updatedData[] = $data;
     }
 
     abstract public function getAll() : array ;
 
-    abstract public function getRecord(tring $id) : array ;
+    abstract public function getRecord(string $id) : array ;
 
 }

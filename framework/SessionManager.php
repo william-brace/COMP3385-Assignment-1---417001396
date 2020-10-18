@@ -1,11 +1,16 @@
 <?php
 session_start();
 
-class SessionClass {
+class SessionManager {
+
+    protected $access = ['profile' => ['batman']];
 
     //create(): create a new session;
     public function create() {
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        
     }
 
     //destroy(): destroy an existing session (effectively logging out a user). To use this method,
@@ -31,6 +36,13 @@ class SessionClass {
         return $_SESSION;
     }
 
+    public function see($name) {
+        if (isset($_SESSION[$name])) {
+            return $_SESSION[$name];
+        }
+        return null;
+    }
+
     //remove($name): remove a variable named $name from session management.
     public function remove($name) {
         unset($_SESSION[$name]);
@@ -39,7 +51,10 @@ class SessionClass {
     //accessible($user, $page): bool: Ensures that the pages associated with the user 
     //profile and courses can only be accessed by the logged in user.
     public function accessible($user, $page) {
-
+        if (in_array($user, $this->access[$page])) {
+            return true;
+        }
+        return false;
     }
 
 

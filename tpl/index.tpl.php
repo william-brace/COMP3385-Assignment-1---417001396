@@ -2,7 +2,7 @@
 <html lang="en-GB">
 	<head>
 		<title>Quwius</title>
-		<link rel="stylesheet" href="../css/styles.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen">
 		<meta charset="utf-8">
 	</head>
 	<body>
