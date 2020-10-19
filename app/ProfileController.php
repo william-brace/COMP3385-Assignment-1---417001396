@@ -5,7 +5,7 @@ class ProfileController extends Controller_Abstract {
 
         $sess = new SessionManager();
         $sess->create();
-        $sess->add('user','batman');
+        $sess->remove('user');
         $v = new View();
         $v->setTemplate(TPL_DIR . '/profile.tpl.php');
 

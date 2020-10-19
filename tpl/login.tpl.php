@@ -20,7 +20,7 @@
 		   <div class="login-box">
 			<div class="login-box-body">
 			<p class="login-box-msg">Be Curious - Sign In</p>
-			<form action="#" method="post">
+			<form action="" method="post">
 			  <div class="form-group has-feedback">
 				<input type="text" class="form-control" placeholder="Email"/>
 			  </div>
