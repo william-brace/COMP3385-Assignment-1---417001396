@@ -10,10 +10,10 @@
 			<a href="#"><img src="images/logo.png" alt="UWI online"></a>
 			<ul>
 				<li><a href="index.php?controller=Courses">Courses</a></li>
-				<li><a href="index.php?controller=Streams">Streams</a></li>
+				<li><a href="streams.php?controller=Streams">Streams</a></li>
 				<li><a href="index.php?controller=AboutUs">About Us</a></li>
-				<li><a href="index.php?controller=Login">Login</a></li>
-				<li><a href="index.php?controller=SignUp">Sign Up</a></li>
+				<li><a href="login.php?controller=Login">Login</a></li>
+				<li><a href="signup.php?controller=SignUp">Sign Up</a></li>
 			</ul>
 		</nav>
 		<main>
@@ -22,17 +22,17 @@
 			<p class="login-box-msg">Sign Up - Feed Your Curiosity</p>
         <form action="processRegistration.php" method="post">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" name="name" placeholder="Full name"/>
+            <input type="text" class="form-control" name="name" placeholder="Full name" required/>
           </div>
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" name="email" placeholder="Email"/>
+            <input type="text" class="form-control" name="email" placeholder="Email" required/>
           </div>
           <div class="form-group has-feedback">
-			<input type="password" class="form-control" name="password" placeholder="Password"/>
+			<input type="password" class="form-control" name="password" placeholder="Password" required/>
 			<div style="color:red; font-weight:bold;"><?php if (isset($password_errors)) { foreach($password_errors as $value) { echo $value . "\n"; }  } ?></div>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" name="password2" placeholder="Retype password"/>
+            <input type="password" class="form-control" name="password2" placeholder="Retype password" required/>
           </div>
           <div class="row">
             <div class="col-xs-8">    

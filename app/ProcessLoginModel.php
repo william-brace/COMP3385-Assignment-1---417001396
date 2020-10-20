@@ -1,8 +1,7 @@
 <?php
-class ProcessRegistrationModel extends Observable_Model {
+class ProcessLoginModel extends Observable_Model {
 
     public function getAll(): array {
-
        return $_POST;
     }
 

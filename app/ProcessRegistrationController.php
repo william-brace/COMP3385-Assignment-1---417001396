@@ -14,30 +14,52 @@ class ProcessRegistrationController extends Controller_Abstract {
         //Get data from post
         $signup_data = $this->model->getAll();
 
-        var_dump($signup_data);
+        
 
         $name = $signup_data['name'];
         $email = $signup_data['email'];
         $password1 = $signup_data['password'];
         $password2 = $signup_data['password2'];
 
-        $password_errors = $this->model->validatePassword($password1);
-        var_dump($password_errors);
+        $password_errors = $this->model->validatePassword($password1, $password2);
+        
 
-        if ($password_errors) {
+        if (!empty($password_errors)) {
             $v->addVar('password_errors', $password_errors);
             $v->setTemplate(TPL_DIR . '/signup.tpl.php');
-            $v->display();  
+            $v->display();        
+        }
+        else {
+            //hash first password
+            $signup_data['password'] = password_hash($signup_data['password'], PASSWORD_DEFAULT);
 
-            
-            // $data = $password_errors;
+            //remove retyped password from data
+            array_pop($signup_data);
 
-            // $this->model->updateTheChangedData($data);
+            //open file
+            if (file_exists(DATA_DIR . "/users.json")) {
+                //get data from file and store it in users_data
+                $users_data = file_get_contents(DATA_DIR . "/users.json");
 
-            // $this->model->notify();
+                //put new user in users array
+                $users_data = json_decode($users_data);
+                $users_data[] = $signup_data;
+                $users_data = json_encode($users_data);
 
-            // $v->setTemplate(TPL_DIR . '/signup.tpl.php');
-            // $v->display();        
+                //send new array contents back to json file to update it
+                if (file_put_contents(DATA_DIR . "/users.json", $users_data)) {
+                    echo "User added!";
+                }
+                else {
+                    echo "User failed to be added";
+                }
+            }
+            else {
+                echo "File could not be found";
+            }
+
+            $v->setTemplate(TPL_DIR . '/login.tpl.php');
+            $v->display();
         }
 
 

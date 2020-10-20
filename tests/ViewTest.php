@@ -13,9 +13,7 @@ class ViewTest extends PHPUnit\Framework\TestCase {
     public function tearDown() : void {
         
     }
-   
-    
-    
+
 
     // a. Ensure a valid View object is created.
     public function testValidView() {

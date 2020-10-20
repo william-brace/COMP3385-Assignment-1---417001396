@@ -12,8 +12,8 @@
 				<li><a href="index.php?controller=Courses">Courses</a></li>
 				<li><a href="index.php?controller=Streams">Streams</a></li>
 				<li><a href="index.php?controller=AboutUs">About Us</a></li>
-				<li><a href="index.php?controller=Login">Login</a></li>
-				<li><a href="index.php?controller=SignUp">Sign Up</a></li>
+				<li><a href="login.php?controller=Login">Login</a></li>
+				<li><a href="signup.php?controller=SignUp">Sign Up</a></li>
 			</ul>
 		</nav>
 		<div id="streams-lead-in">

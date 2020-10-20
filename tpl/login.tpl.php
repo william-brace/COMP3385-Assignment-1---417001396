@@ -10,22 +10,23 @@
 			<a href="#"><img src="images/logo.png" alt="UWI online"></a>
 			<ul>
 				<li><a href="index.php?controller=Courses">Courses</a></li>
-				<li><a href="index.php?controller=Streams">Streams</a></li>
+				<li><a href="streams.php?controller=Streams">Streams</a></li>
 				<li><a href="index.php?controller=AboutUs">About Us</a></li>
-				<li><a href="index.php?controller=Login">Login</a></li>
-				<li><a href="index.php?controller=SignUp">Sign Up</a></li>
+				<li><a href="login.php?controller=Login">Login</a></li>
+				<li><a href="signup.php?controller=SignUp">Sign Up</a></li>
 			</ul>
 		</nav>
 		<main>
 		   <div class="login-box">
 			<div class="login-box-body">
 			<p class="login-box-msg">Be Curious - Sign In</p>
-			<form action="" method="post">
+			<form action="processLogin.php" method="post">
+			<div style="color:red; font-weight:bold;"><?php if (isset($login_error)) { echo $login_error;  } ?></div>
 			  <div class="form-group has-feedback">
-				<input type="text" class="form-control" placeholder="Email"/>
+				<input type="text" class="form-control" placeholder="Email" name="email"/>
 			  </div>
 			  <div class="form-group has-feedback">
-				<input type="password" class="form-control" placeholder="Password"/>
+				<input type="password" class="form-control" placeholder="Password" name="password"/>
 			  </div>
 			  <div class="row">
 				<div class="col-xs-8">    
