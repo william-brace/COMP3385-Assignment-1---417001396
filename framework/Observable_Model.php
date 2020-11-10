@@ -1,5 +1,7 @@
 <?php
 
+namespace Framework;
+
 // require './framework/Model_Abstract.php';
 // require './framework/Observable_Interface.php';
 
@@ -36,8 +38,8 @@ abstract class Observable_Model extends Model_Abstract implements Observable_Int
         $this->updatedData[] = $data;
     }
 
-    abstract public function getAll() : array ;
+    abstract public function findAll() : array ;
 
-    abstract public function getRecord(string $id) : array ;
+    abstract public function findRecord(string $id) : array ;
 
 }

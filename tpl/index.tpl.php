@@ -9,7 +9,7 @@
 		<nav>
 			<a href="/"><img src="images/logo.png" alt="Quwius"></a>
 			<ul>
-				<li><a href="index.php?controller=Courses">Courses</a></li>
+				<li><a href="index.php?controller=Index">Courses</a></li>
 				<li><a href="index.php?controller=Streams">Streams</a></li>
 				<li><a href="index.php?controller=AboutUs">About Us</a></li>
 				<li><a href="login.php?controller=Login">Login</a></li>
@@ -30,7 +30,31 @@
 		<header></header>
 		<main>
 			<h1>Most Popular</h1>
-			<div class="centered">
+
+			<?php
+            $i = -1;
+            foreach($courses['popular'] as $k => $c): $i++;
+            if (($i % 4) == 0):
+            ?>
+            <div class="centered">
+            <?php
+                endif;
+            ?>
+                <section>
+                <a href="#"><img src="images/<?php echo $c[5] ?>" alt="<?php echo $c[0] ?>" title="<?php echo $c[0] ?>">
+                <span class="course-title"><?php echo $c[1] ?></span>
+                <span>Course Instructor</span></a>
+                </section>
+                <?php
+                if (($i % 4) == 3):
+                ?>
+                </div>
+                <?php 
+                endif;
+            endforeach;
+            ?>
+
+			<!-- <div class="centered">
 				<section>
 				<a href="#"><img src="images/datastructures.jpg" alt="First Course" title="Data structures">
 				<span class="course-title">Introduction to Data Structures</span>
@@ -73,9 +97,35 @@
 				<span class="course-title">Robotics</span>
 				<span>Course Instructor</span></a>
 				</section>
-			</div>
-			
+			</div> -->
+
+
 			<h1>Learner Recommended</h1>
+			
+			<?php
+            $i = -1;
+            foreach($courses['recommended'] as $k => $c): $i++;
+            if (($i % 4) == 0):
+            ?>
+            <div class="centered">
+            <?php
+                endif;
+            ?>
+                <section>
+                <a href="#"><img src="images/<?php echo $c[5] ?>" alt="<?php echo $c[0] ?>" title="<?php echo $c[0] ?>">
+                <span class="course-title"><?php echo $c[1] ?></span>
+                <span>Course Instructor</span></a>
+                </section>
+                <?php
+                if (($i % 4) == 3):
+                ?>
+                </div>
+                <?php 
+                endif;
+            endforeach;
+            ?>
+			
+			 <!-- <h1>Learner Recommended</h1>
 			<div class="centered">
 				<section>
 				<a href="#"><img src="images/ai.jpg" alt="Learner first Course" title="Artificial Intelligence">
@@ -119,7 +169,7 @@
 				<span class="course-title">Computational Physics</span>
 				<span>Course Instructor</span></a>
 			</section>
-			</div>
+			</div> -->
 			<footer>
 				<nav>
 					<ul>

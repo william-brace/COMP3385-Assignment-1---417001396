@@ -1,9 +1,15 @@
 <?php
 
-abstract class Controller_Abstract {
+namespace Framework;
+
+abstract class PageControllerCommand_Abstract implements Command_Interface {
 
     protected $model = null;
     protected $view = null;
+
+
+   //model and view needs modifying to use abstract factory pattern
+
 
     //assigns the Model object to the protected attribute $model in the Controller class, which is initialized as null. [2 marks]
      public function setModel(Observable_Model $model) {
@@ -17,4 +23,7 @@ abstract class Controller_Abstract {
 
     //an abstarct method that performs the page’s business logic.
      abstract public function run(); 
+
+
+     abstract public function execute(CommandContext $context) : bool;
 }

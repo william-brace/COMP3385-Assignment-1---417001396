@@ -3,8 +3,18 @@
 // require './framework/Controller_Abstract.php';
 // require './framework/View.php';
 
+namespace Apps\handlers;
 
-class IndexController extends Controller_Abstract {
+use Framework\PageControllerCommand_Abstract;
+use Framework\CommandContext;
+use Framework\View;
+
+
+
+class IndexController extends PageControllerCommand_Abstract {
+    
+    private $data = null;
+    
     public function run() {
 
         $v = new View();
@@ -16,11 +26,22 @@ class IndexController extends Controller_Abstract {
 
         $this->model->attach($this->view);
 
-        $data = $this->model->getAll();
+        $data = $this->model->findAll();
+        
+        // $this->model->updateTheChangedData($data);
 
-        $this->model->updateTheChangedData($data);
+        // $this->model->notify();
+        var_dump($data);
 
-        $this->model->notify();
+        $v->addVar('courses', $data);
 
+        $v->setTemplate(TPL_DIR . "/index.tpl.php");
+        $v->display();  
+    } 
+    
+    public function execute(CommandContext $context) : bool {
+        $this->data = $context;
+        $this->run();
+        return false;
     }
 }

@@ -1,5 +1,9 @@
 <?php 
 spl_autoload_register(function($class) {
+    
+    $parts = explode('\\', $class);
+    $class = $parts[count($parts)-1];
+    
     if (!defined('APP_DIR')) {
         define ("ROOT_DIR", "/Users/williambrace/Local Sites/417001396 - Assignment 1");
         define("APP_DIR", ROOT_DIR . "/app");
@@ -8,11 +12,11 @@ spl_autoload_register(function($class) {
         define("TPL_DIR", ROOT_DIR . "/tpl");
 
     }
-    if (file_exists(FRAMEWORK_DIR . "/" . $class . ".php")) {
-        require FRAMEWORK_DIR . "/" . $class . ".php";
-    }
-    else if (file_exists(APP_DIR . "/" . $class . ".php")) {
+    if (file_exists(APP_DIR . "/" . $class . ".php")) {
         require APP_DIR . "/" . $class . ".php";
+    }
+    else if (file_exists(FRAMEWORK_DIR . "/" . $class . ".php")) {
+        require FRAMEWORK_DIR . "/" . $class . ".php";
     }
     else if (file_exists(DATA_DIR . "/" . $class . ".php")) {
         require DATA_DIR . "/" . $class . ".php";

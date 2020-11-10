@@ -1,5 +1,7 @@
 <?php 
 
+namespace Framework;
+
 require './autoload.php';
 
 //require './framework/Observer_Interface.php';
@@ -58,6 +60,7 @@ class View implements Observer_Interface {
         $record = $observable->giveUpdate();
         foreach($record as $k => $r) {
             $this->addVar($k, $r);
+           
         }
         $this->display();
     }

@@ -1,4 +1,7 @@
 <?php
+
+namespace Framework;
+
 session_start();
 
 class SessionManager {

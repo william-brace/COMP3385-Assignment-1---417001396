@@ -1,5 +1,12 @@
 <?php 
-class ProcessLoginController extends Controller_Abstract {
+
+namespace Apps\handlers;
+
+use Framework\PageControllerCommand_Abstract;
+use Framework\CommandContext;
+use Framework\View;
+
+class ProcessLoginController extends PageControllerCommand_Abstract {
     public function run() {
 
         
@@ -55,7 +62,7 @@ class ProcessLoginController extends Controller_Abstract {
                         $v->addVar('login_error', "Invalid email/password");
                         $v->setTemplate(TPL_DIR . '/login.tpl.php');
                         $v->display();  
-                        
+    
                     }
 
 
@@ -78,5 +85,12 @@ class ProcessLoginController extends Controller_Abstract {
         else {
             echo "File could not be found";
         }
+
+    }
+
+    public function execute(CommandContext $context) : bool {
+        // $this->data = $context;
+        // $this->run();
+        // return false;
     }
 }

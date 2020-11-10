@@ -1,5 +1,7 @@
 <?php 
 
+namespace Framework;
+
 interface Observable_Interface
 {
     public function attach(Observer_Interface $observer);

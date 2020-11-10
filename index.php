@@ -1,6 +1,10 @@
 <?php
 require './autoload.php';
 
-$controller = new IndexController();
+use Framework\FrontController;
 
-$controller->run();
+// $controller = new IndexController();
+
+// $controller->run();
+
+FrontController::run();
