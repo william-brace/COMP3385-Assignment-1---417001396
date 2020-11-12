@@ -18,7 +18,7 @@ class IndexModel extends Observable_Model {
         }
         else
         {
-            echo 'Get popular course query is a sucess';
+            //echo 'Get popular course query is a sucess';
             
             
 
@@ -37,7 +37,7 @@ class IndexModel extends Observable_Model {
         }
         else
         {
-            echo 'Get Recommended course query is a sucess';
+            //echo 'Get Recommended course query is a sucess';
             
             
 

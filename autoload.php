@@ -5,7 +5,7 @@ spl_autoload_register(function($class) {
     $class = $parts[count($parts)-1];
     
     if (!defined('APP_DIR')) {
-        define ("ROOT_DIR", "/Users/williambrace/Local Sites/417001396 - Assignment 1");
+        define ("ROOT_DIR", "/Users/williambrace/417001396 - Assignment 2");
         define("APP_DIR", ROOT_DIR . "/app");
         define("FRAMEWORK_DIR", ROOT_DIR . "/framework");
         define("DATA_DIR", ROOT_DIR . "/data");

@@ -2,9 +2,25 @@
 
 namespace Framework;
 
-session_start();
+//session_start();
 
 class SessionManager {
+
+    private static $instance;
+
+    private function __construct()
+    {
+
+    }
+    
+    public static function getInstance()
+    {
+        if (empty(self::$instance)) 
+        { 
+            self::$instance = new SessionManager();
+        }
+        return self::$instance;
+    }
 
     protected $access = ['profile' => ['batman']];
 
@@ -34,8 +50,6 @@ class SessionManager {
     }
 
     public function getSession() {
-        
-        
         return $_SESSION;
     }
 

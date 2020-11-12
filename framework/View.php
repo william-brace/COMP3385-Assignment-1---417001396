@@ -2,7 +2,7 @@
 
 namespace Framework;
 
-require './autoload.php';
+// require './autoload.php';
 
 //require './framework/Observer_Interface.php';
 

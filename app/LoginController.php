@@ -11,8 +11,8 @@ class LoginController extends PageControllerCommand_Abstract {
     public function run() {
 
 
-        $sess = new SessionManager();
-        $sess->create();
+        // $sess = new SessionManager();
+        // $sess->create();
         $v = new View();
         $v->setTemplate(TPL_DIR . '/login.tpl.php');
         $v->display();

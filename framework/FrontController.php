@@ -16,9 +16,8 @@ class FrontController extends FrontController_Abstract {
     }
 
     protected function init() {
-        //creation of validator
-        //creation of session manager
-        //creation response handler
+        Validator::getInstance();
+        SessionManager::getInstance();
     }
 
     protected function handleRequest() {
@@ -27,8 +26,11 @@ class FrontController extends FrontController_Abstract {
       
         $req = $context->get('get', 'controller');
 
+        //echo $req;
+
         if (!$req) {
             $handler = RequestHandlerFactory::makeRequestHandler();
+            //echo $req;
         }
         else 
         {

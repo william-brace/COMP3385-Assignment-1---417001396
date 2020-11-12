@@ -1,43 +1,31 @@
 <?php
+namespace Apps\handlers;
+
+use Framework\Observable_Model;
+
 class ProcessRegistrationModel extends Observable_Model {
 
-    public function getAll(): array {
+    public function findAll(): array {
 
        return $_POST;
     }
 
-    public function getRecord(string $id): array {
+    public function findRecord(string $id): array {
         return [];
     }
 
-    public function validatePassword($password, $password2) {
-        $passwordErrors = [];
+    
 
-        if (strcmp($password,$password2) != 0) {
-            $passwordErrors[] = "Passwords must be identical";
+    public function registerUser(array $userData)
+    {
+        //echo $userData['name'];
+
+        $connection = $this->makeConnection();
+
+        $insert_Result = $this->insert($userData, $connection);
+
+        if ($insert_Result) {
+            return true;
         }
-        if (strlen($password) < 10) {
-            $passwordErrors[] = "Password must be at least 10 characters long";
-        }
-        if (preg_match("/[0-9]/",$password) == 0) {
-            $passwordErrors[] = "Password must contain at least one digit";
-        }
-        if (preg_match("/(?=.*[A-Z])/",$password) == 0) {
-            $passwordErrors[] = " Password must contain at least one uppercase character";
-        }
-
-        return $passwordErrors;
-
-
-
-        // if (preg_match("/[a-z]/i",$password) == 0) {
-        //     $passwordErrors = "Password must contain at least one letter";
-        // }
-
-        // if (preg_match("/[0-9]/",$password) == 0) {
-        //     $passwordErrors = "Password must contain at least one digit";
-        // }
-
     }
-
 }

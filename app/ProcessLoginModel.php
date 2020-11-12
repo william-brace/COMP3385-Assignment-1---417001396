@@ -1,42 +1,52 @@
 <?php
+
+namespace Apps\handlers;
+
+use Framework\Observable_Model;
+
 class ProcessLoginModel extends Observable_Model {
 
-    public function getAll(): array {
+    public function findAll(): array {
        return $_POST;
     }
 
-    public function getRecord(string $id): array {
+    public function findRecord(string $id): array {
         return [];
     }
 
-    public function validatePassword($password, $password2) {
-        $passwordErrors = [];
-
-        if (strcmp($password,$password2) != 0) {
-            $passwordErrors[] = "Passwords must be identical";
-        }
-        if (strlen($password) < 10) {
-            $passwordErrors[] = "Password must be at least 10 characters long";
-        }
-        if (preg_match("/[0-9]/",$password) == 0) {
-            $passwordErrors[] = "Password must contain at least one digit";
-        }
-        if (preg_match("/(?=.*[A-Z])/",$password) == 0) {
-            $passwordErrors[] = " Password must contain at least one uppercase character";
-        }
-
-        return $passwordErrors;
+    public function checkUser(string $email, string $password) {
+        $connection = $this->makeConnection();
 
 
+        
+       
 
-        // if (preg_match("/[a-z]/i",$password) == 0) {
-        //     $passwordErrors = "Password must contain at least one letter";
-        // }
+            // $db_username = $row['username'];
+            // $db_password = $row['password'];
 
-        // if (preg_match("/[0-9]/",$password) == 0) {
-        //     $passwordErrors = "Password must contain at least one digit";
-        // }
+            //         echo "db username is " . $db_username . " and db password is " . $db_password;
 
+
+            //         if (password_verify($password, $db_password))
+            //         {
+            //             $_SESSION['username'] = $username;
+                        
+
+
+            //             header("Location: ../profile.html.php");
+            //         }
+            //         else
+            //         {
+            //             $signinUsernameErrors = "Invalid Username";
+            //             $signinPasswordErrors = "Invalid Password";
+            //             include("../index.html.php");
+                        
+            //         }
+            //     }
+            // }  
+
+        
     }
 
+    
 }

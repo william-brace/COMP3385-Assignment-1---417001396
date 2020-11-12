@@ -5,7 +5,7 @@ namespace Framework;
 // require './framework/Model_Abstract.php';
 // require './framework/Observable_Interface.php';
 
-require './autoload.php';
+// require './autoload.php';
 
 
 abstract class Observable_Model extends Model_Abstract implements Observable_Interface  {

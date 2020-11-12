@@ -31,7 +31,7 @@ class IndexController extends PageControllerCommand_Abstract {
         // $this->model->updateTheChangedData($data);
 
         // $this->model->notify();
-        var_dump($data);
+        //var_dump($data);
 
         $v->addVar('courses', $data);
 

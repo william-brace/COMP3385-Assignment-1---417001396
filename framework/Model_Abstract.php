@@ -36,4 +36,72 @@ abstract class Model_Abstract{
         return $connect;
 
     }
+
+    use Insert_Trait;
+
+    public function insert(array $values, $connection) {
+
+        //var_dump($values);
+
+        $name = $values['name'];
+        $email = $values['email'];
+        $password = $values['password'];
+
+        $signupQuery = "INSERT INTO users (`name`, email, `password`) VALUES ('$name', '$email', '$password')"; 
+
+        $result = mysqli_query($connection, $signupQuery);
+
+        if ($result)
+        {
+            //echo "User Added";
+            //$_SESSION['username'] = $username;
+            return true;
+        }
+        else {
+            die("User failed to be added! Error!" . mysqli_error($connection));
+            
+        }
+
+    }
+
+    use Read_Trait;
+
+    public function read(string $key, $connection) {
+
+        //echo $key;
+
+        $query = "SELECT * FROM users where email = '{$key}'"; 
+
+        $select_user_query = mysqli_query($connection, $query);
+
+        
+        if (!$select_user_query)
+        {
+            die("QUERY LOGIN FAILED! " . mysqli_error);
+            return false;
+        }
+        else {
+            
+            $row = mysqli_fetch_array($select_user_query);
+
+            //var_dump($row);
+        
+            if (empty($row)) {
+                return false;
+            }
+            else {
+
+                return $row;
+            }
+        }
+
+                
+
+
+
+
+        
+
+    }
+
 }
